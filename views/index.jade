@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	p Enter link to shorten
+	form(name="link", method="post", action="/")
+		input(type="text", name="link", placeholder="e.g. http://google.com")
+		input(type="submit", value="Generate Link")
