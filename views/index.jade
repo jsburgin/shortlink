@@ -1,7 +1,12 @@
 extends layout
 
 block content
-	p Enter link to shorten
-	form(name="link", method="post", action="/")
-		input(type="text", name="link", placeholder="e.g. http://google.com")
-		input(type="submit", value="Generate Link")
+	div(class="shorten-form")
+		p Enter a link to shorten.
+		form(name="link", method="post", action="/")
+			input(type="text", class="link-input", name="link", placeholder="http://something.com", spellcheck="false", autocomplete="off", autofocus)
+			div(class="button-wrap")
+				input(type="submit", class="link-submit-button" value="Generate Link")
+		if error
+			div(class="error-box")
+				p(class="error-text")= error			

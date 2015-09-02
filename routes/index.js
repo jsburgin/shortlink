@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+require('dotenv').load();
+
 var link = require('../link');
 
 router.get('/:code?', function(req, res, next) {
@@ -23,13 +25,18 @@ router.get('/:code?', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	var userLink = req.body.link;
 
+	if (!userLink) {
+		return res.render('index', {tite: 'Shorten Link', error: 'Please enter valid url.'})
+	}
+
 	link.generateLink(userLink, function(err, code) {
 		if (err) {
 			console.error(err);
 			return res.send('Unable to generate link.');
 		}
 
-		res.send('http://localhost:3000/' + code);
+		var link = process.env.SHORT_URL + code;
+		res.render('generated', {link: link});
 	});
 });
 
