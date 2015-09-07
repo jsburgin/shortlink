@@ -4,7 +4,7 @@ block content
     div(class="shorten-form")
         p Enter a link to shorten.
         form(name="link", method="post", action="/")
-            input(type="text", class="link-input", name="link", placeholder="http://something.com", spellcheck="false", autocomplete="off", autofocus)
+            input(type="text", class="link-input", name="link", placeholder="http://something.com", spellcheck="false", autocomplete="off", autocapitalize="false", autofocus)
             div(class="button-wrap")
                 input(type="submit", class="link-submit-button" value="Generate Link")
         if error
